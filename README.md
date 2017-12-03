@@ -11,6 +11,14 @@ This patterns can help us to select them or discard them from our portfolio. The
 
 [More information about Fundamental vs Technical Analysis ](https://www.investopedia.com/university/technical/techanalysis2.asp)
 
+## Question
+
+> Common sense is not so common -Voltaire
+
+Using common sense, we can say that a company is good if it sells a lot, increases its sales and gives some profit from those sales. I want to analyze with this project if this common-sense assumption is also applied in the stock market, in other words:
+
+Companies that increase their sales and their profits also increase their stock price?
+
 
 ## Hypotheses
 
@@ -18,13 +26,11 @@ For this project I will try to test some hypothesis about the companies in the S
 
 1. Companies that increase their revenue year on year also increase their stock price.
 
-2. Information Technology companies have higher price returns than the rest of the companies in other sectors.
-
-3. Companies with high profitability have high investment returns for stockholders.
+2. Companies with high profitability have high investment returns for stockholders.
 
 These hypotheses are general and can give us a snapshot of internal business variables that affect the performance of a stock in the market. In the future, the idea with this project is going to another level of fundamental analysis. I want to find the relation between the quality of the people leading a business and the results of the companies and also analyzing the official communications using NLP.
 
-## Project Workflow
+## Plan of Action
 
 This data analysis project will follow the following steps:
 
@@ -32,9 +38,11 @@ This data analysis project will follow the following steps:
 
 2. **Exploratory data analysis**: this part of the analysis includes some general plots and analysis of the results of the companies in the S&P 500 index and the evolution in the stock prices.
 
-3. **Hypothesis validation**: each hypothesis will be analyzed on separate scripts.
+3. **Hypothesis validation**: each hypothesis will be analyzed on separate scripts. The idea is performing some data wrangling with the raw data and using scatter plots and box plots to identify some underlying relations between the variables. Then performing some linear regression tests to find the relations between the variables.
 
 4. **Results report**: the results of the EDA and the hypothesis validation will be stored in a final document.
+
+PS: In the `src` folder in the repository I started the scripts for steps 1 - 3.
 
 ## Data Sources
 
