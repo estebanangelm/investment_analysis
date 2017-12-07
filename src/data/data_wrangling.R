@@ -45,4 +45,19 @@ prices_sector <- var_price_revenue %>% inner_join(securities,by = c("ticker" = "
 
 write_csv(prices_sector,'../../data/processed/price_sector.csv')
 
+#Market cap for each of the sectors. Is the way of identifying how really is composed the S&P
+
+market_cap_sector <- fundamentals %>% select(ticker = `Ticker Symbol`,
+                                             period = `Period Ending`,
+                                             shares = `Estimated Shares Outstanding`) %>%
+                                      left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>% 
+                                      select(ticker,period,shares,price = close) %>% 
+                                      left_join(securities,by=c("ticker"="Ticker symbol")) %>% 
+                                      select(ticker,period,shares,price,sector=`GICS Sector`) %>% 
+                                      mutate(market_cap = price * shares) %>% 
+                                      group_by(sector) %>% 
+                                      summarize(total_market_cap = sum(market_cap,na.rm=TRUE))
+
+write_csv(market_cap_sector,'../../data/processed/market_cap_sector.csv')
+
 options(warn = 0)
