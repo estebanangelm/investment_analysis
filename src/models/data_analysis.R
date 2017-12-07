@@ -67,7 +67,4 @@ ggplot(market_cap_sector)+
 
 ggsave("../../results/figures/eda_plot_2.png")
 
-
-
-
 options(warn = 0)
