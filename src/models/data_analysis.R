@@ -1,3 +1,9 @@
+# Esteban Angel, Dec 2017
+#
+# This script takes the processed datasets and creates some plots and statistical analysis for testing the hypotheses. 
+#
+# Usage:
+
 library(tidyverse)
 library(forcats)
 
