@@ -1,10 +1,12 @@
 library(tidyverse)
+library(forcats)
 
 options(warn = -1)
 
 var_price_revenue <- read_csv('../../data/processed/var_price_revenue.csv')
 var_price_margin <- read_csv('../../data/processed/var_price_margin.csv')
 price_sector <- read_csv('../../data/processed/price_sector.csv')
+market_cap_sector <- read_csv('../../data/processed/market_cap_sector.csv')
 
 #Hypothesis 1
 
@@ -48,9 +50,24 @@ ggplot(price_sector)+
   geom_jitter(aes(x=sector,y=var_price),alpha=0.3,color="#4B86B4")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position="none")+
-  scale_y_continuous("Price Variation",labels = scales::percent_format())
+  scale_y_continuous("Price Variation",labels = scales::percent_format())+
+  ggtitle("Returns per sector")
 
 ggsave("../../results/figures/eda_plot_1.png")
+
+#EDA 2
+
+ggplot(market_cap_sector)+
+  geom_col(aes(x=fct_reorder(sector,total_market_cap),y=total_market_cap),alpha=0.6,color="#4B86B4",fill="#4B86B4")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position="none")+
+  scale_y_continuous("Market Cap",labels = scales::dollar_format())+
+  scale_x_discrete("")+
+  ggtitle("Market Capitalization per Sector")
+
+ggsave("../../results/figures/eda_plot_2.png")
+
+
 
 
 options(warn = 0)
