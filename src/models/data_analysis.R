@@ -2,17 +2,32 @@
 #
 # This script takes the processed datasets and creates some plots and statistical analysis for testing the hypotheses. 
 #
-# Usage:
+# Usage: Rscript data_analysis.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png
 
 library(tidyverse)
 library(forcats)
 
 options(warn = -1)
 
-var_price_revenue <- read_csv('../../data/processed/var_price_revenue.csv')
-var_price_margin <- read_csv('../../data/processed/var_price_margin.csv')
-price_sector <- read_csv('../../data/processed/price_sector.csv')
-market_cap_sector <- read_csv('../../data/processed/market_cap_sector.csv')
+root <- "../../"
+
+args <- commandArgs(trailingOnly = TRUE)
+
+origin_1 <- args[1]
+origin_2 <- args[2]
+origin_3 <- args[3]
+origin_4 <- args[4]
+
+destination_1 <- args[5]
+destination_2 <- args[6]
+destination_3 <- args[7]
+destination_4 <- args[8]
+destination_5 <- args[9]
+
+var_price_revenue <- read_csv(paste(root,origin_1,sep=""))
+var_price_margin <- read_csv(paste(root,origin_2,sep=""))
+price_sector <- read_csv(paste(root,origin_3,sep=""))
+market_cap_sector <- read_csv(paste(root,origin_4,sep=""))
 
 #Hypothesis 1
 
@@ -25,7 +40,7 @@ hyp_1_plot_1 <- ggplot(var_price_revenue)+
   scale_x_continuous("Revenue Variation",labels = scales::percent_format())+
   ggtitle("Price Variation vs Revenue Variation")
 
-ggsave("../../results/figures/hyp_1_plot_1.png")
+ggsave(paste(root,destination_1,sep=""))
 
 (hyp_1_plot_2 <- ggplot(var_price_revenue %>% filter(var_revenue != "NA"))+
   geom_boxplot(aes(x=var_revenue>0,y=var_price),alpha=0.3,color="#4B86B4",fill="#4B86B4")+
@@ -34,7 +49,7 @@ ggsave("../../results/figures/hyp_1_plot_1.png")
   scale_x_discrete("YoY Revenue Increase")+
   ggtitle("Price Variation vs Revenue Variation"))
 
-ggsave("../../results/figures/hyp_1_plot_2.png")
+ggsave(paste(root,destination_2,sep=""))
 
 #Hypothesis 2
 
@@ -47,7 +62,7 @@ ggsave("../../results/figures/hyp_1_plot_2.png")
   scale_x_continuous("Revenue Variation")+
   ggtitle("Price Variation vs Revenue Variation"))
 
-ggsave("../../results/figures/hyp_1_plot_1.png")
+ggsave(paste(root,destination_3,sep=""))
 
 #EDA 1
 
@@ -59,7 +74,7 @@ ggplot(price_sector)+
   scale_y_continuous("Price Variation",labels = scales::percent_format())+
   ggtitle("Returns per sector")
 
-ggsave("../../results/figures/eda_plot_1.png")
+ggsave(paste(root,destination_4,sep=""))
 
 #EDA 2
 
@@ -71,6 +86,6 @@ ggplot(market_cap_sector)+
   scale_x_discrete("")+
   ggtitle("Market Capitalization per Sector")
 
-ggsave("../../results/figures/eda_plot_2.png")
+ggsave(paste(root,destination_5,sep=""))
 
 options(warn = 0)

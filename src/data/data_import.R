@@ -1,11 +1,11 @@
-library(tidyverse)
-
 # Esteban Angel, Dec 2017
 #
 # This script imports the datasets for the `investment_analysis` project from Amazon S3. 
 #
 # Usage: Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv 
 # data/original/prices.csv data/original/securities.csv
+
+library(tidyverse)
 
 options(warn = -1)
 
