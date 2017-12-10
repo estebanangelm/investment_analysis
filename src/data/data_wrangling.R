@@ -1,11 +1,10 @@
-library(tidyverse)
-
 # Esteban Angel, Dec 2017
 #
 # This script takes the original datasets and performs some wrangling in order to make the visualization process easier. 
 #
 # Usage: Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv
 
+library(tidyverse)
 options(warn = -1)
 
 root <- "../../"

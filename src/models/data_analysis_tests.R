@@ -17,9 +17,9 @@ args <- commandArgs(trailingOnly = TRUE)
 origin_1 <- args[1]
 origin_2 <- args[2]
 
-destination_1 <- args[5]
-destination_2 <- args[6]
-destination_3 <- args[7]
+destination_1 <- args[3]
+destination_2 <- args[4]
+destination_3 <- args[5]
 
 var_price_revenue <- read_csv(paste(root,origin_1,sep=""))
 var_price_margin <- read_csv(paste(root,origin_2,sep=""))
@@ -38,7 +38,7 @@ down_up <- var_price_revenue %>% filter(var_revenue<0,var_price>0) %>% nrow()
 down_down <- var_price_revenue %>% filter(var_revenue<0,var_price<0) %>% nrow()
 
 hyp_1_test_2 <-  data_frame(revenue = c("Increase","Increase","Decrease","Decrease"),
-                     revenue = c("Increase","Decrease","Increase","Decrease"),
+                     price = c("Increase","Decrease","Increase","Decrease"),
                      num_obs = c(up_up,up_down,down_up,down_down))
 
 write_csv(hyp_1_test_2,paste(root,destination_2,sep=""))
