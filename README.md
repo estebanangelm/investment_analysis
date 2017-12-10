@@ -58,21 +58,49 @@ The data sources used for this project come from the [Kaggle's New York Stock Ex
 
 ## Usage
 
-The scripts should be executed from the root directory of the repository in the following order:
+First clone this GitHub repository. Then go to the terminal and from the `root` execute the following command:
+
+`bash run_all.sh`
+
+This script executes all the scripts necessary for creating the final report.
+
+You can also execute each of the scripts independently but you must follow this order:
 
 - **data_import.r**
 
-`Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
-`
+```
+Rscript src/data/data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
+```
 
 - **data_wrangling.r**
 
-`Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv`
+```
+Rscript src/data/data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv
+```
 
 - **data\_analysis_figures.r**
 
-`Rscript data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png`
+```
+Rscript src/models/data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png
+```
 
 - **data\_analysis_tests.r**
 
-`Rscript data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv`
+```
+Rscript src/models/data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv
+```
+
+- **run_report.sh**
+
+```
+bash run_report.sh
+```
+
+This execution will be automated with a Makefile in the 3rd release, for now the paths seems long but is just copying and pasting them in the terminal!
+
+## Dependencies
+
+For running this project you should have:
+
+- R and RStudio.
+- `tidyverse` and `ezknitr`libraries.

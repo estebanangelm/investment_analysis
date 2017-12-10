@@ -2,14 +2,16 @@
 #
 # This script takes the original datasets and performs some wrangling in order to make the visualization process easier. 
 #
-# Usage: Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv
+# Usage: Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv 
+#        data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
+#        data/processed/price_sector.csv data/processed/market_cap_sector.csv
 
 library(tidyverse)
 
 #Code for disabling R warnings in the terminal
 options(warn = -1)
 
-root <- "../../"
+root <- ""
 
 args <- commandArgs(trailingOnly = TRUE)
 
@@ -49,7 +51,7 @@ write_csv(var_price_revenue,paste(root,destination_1,sep=""))
 #Wrangling for Hypothesis 2
 ######################################################################################
 
-#This code compares the profitability of the companies and their year on year returns and saves the resulting dataframe in a CSV.
+#This code compares the profitability of the companies and their returns and saves the resulting dataframe in a CSV.
 
 var_price_margin <- fundamentals %>%  select(ticker = `Ticker Symbol`,
                                               period = `Period Ending`,

@@ -2,7 +2,8 @@
 #
 # This script takes the processed datasets and creates some statistical analysis for testing the hypotheses. 
 #
-# Usage: Rscript data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv
+# Usage: Rscript data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
+#        results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv
 
 library(tidyverse)
 library(forcats)
@@ -11,7 +12,7 @@ library(broom)
 #Code for disabling R warnings in the terminal
 options(warn = -1)
 
-root <- "../../"
+root <- ""
 
 args <- commandArgs(trailingOnly = TRUE)
 

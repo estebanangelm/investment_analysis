@@ -1,12 +1,8 @@
----
-title: "Investment Analysis Report"
-output: github_document
-author: "Esteban Angel"
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+#Investment Analysis Report
+
 ```{r message=FALSE,warning=FALSE}
 library(tidyverse)
 library(knitr)
@@ -50,23 +46,23 @@ The first step of the analysis was understanding better the structure of the S&P
 $$MarketCap = TotalShares * PricePerShare$$
 When we add up the `market_cap` for all the companies in each sector of the S&P 500, we can have a general picture of the most important and less important sectors that compose it. I summarized them in the following plot:
 
-![Market Cap per Sector](./figures/eda_plot_2.png)
+![Market Cap per Sector](../../results/figures/eda_plot_2.png)
 
 We can see that Financials, Healthcare and IT companies dominate the index. Additional to the `market_cap` per sector, it's relevant to know the performance of the different companies that compose each sector. For analyzing this, I plotted all the individual year on year returns for all the companies that comprise each sector:
 
-![Returns per Sector](./figures/eda_plot_1.png)
+![Returns per Sector](../../results/figures/eda_plot_1.png)
 We can see that the IT sector slightly outperforms the rest of the sectors and Energy is underperforming compared to the rest. After this overview of the S&P index, we start analyzing the two hypothesis of this project.
 
 ##Hypothesis 1
 
 Using common sense, we would say that a company is in a good situation if it increases its sales and in a bad situation if those sales decrease year on year. Most of the times things are more complicated because behind the variation in revenue other factors can affect the future of a company. But assuming that the rest of the variables are held constant, we can plot the changes in revenue per company in the S&P 500 year on year vs the variation in the stock price in that same period. We get the following scatterplot which shows a slight linear relationship:
 
-![Var Price vs Var Revenue](./figures/hyp_1_plot_1.png)
+![Var Price vs Var Revenue](../../results/figures/hyp_1_plot_1.png)
 
 Additional to the visual analysis, I fitted a simple linear model comparing these variations in price with the changes in revenue:
 
 ```{r warning=FALSE,message=FALSE}
-knitr::kable(read_csv(file = 'tests/hyp_1_test_1.csv'),format = "markdown")
+knitr::kable(read_csv(file = '../../results/tests/hyp_1_test_1.csv'),format = "markdown")
 ```
 
 From the previous linear model, we can see that the slope term is significant. Thus we can say that there's a positive linear relationship between the variation in profits and the variation in the stock price. In other words, if a company increases the revenue by 1%, holding the rest of the variables constant, the stock price of that company increases a 0.5%. The same occurs with negative variations in revenue.
@@ -74,11 +70,11 @@ From the previous linear model, we can see that the slope term is significant. T
 We can also visualize and group the different stocks with the following behaviors:
 
 ```{r warning=FALSE,message=FALSE}
-knitr::kable(read_csv(file = 'tests/hyp_1_test_2.csv'),format = "markdown")
+knitr::kable(read_csv(file = '../../results/tests/hyp_1_test_2.csv'),format = "markdown")
 ```
 With the previous table, we can see that a 67% of the observations have an effect in price coherent with what we found in the linear model. We can group and visualize the results from the previous table also with the following plot:
 
-![BoxPlot Revenue](./figures/hyp_1_plot_2.png)
+![BoxPlot Revenue](../../results/figures/hyp_1_plot_2.png)
 With this plot, we can see that the mean price variation and also most the price variation of most of the observations in the group of companies with a revenue increase are higher than the ones in with decreasing revenue.
 Now that we validated Hypothesis 1, we can continue analyzing hypothesis 2.
 
@@ -89,11 +85,11 @@ Additional to increasing sales, a company should leave some profit from that rev
 
 The approach for testing this hypothesis was similar to hypothesis 1, starting with a scatterplot between both variables and fitting a linear model assuming that the rest of the variables are held constant:
 
-![Scatter Profit](./figures/hyp_2_plot_1.png)
+![Scatter Profit](../../results/figures/hyp_2_plot_1.png)
 In this case, when we compare the `operating_margin` with the `price_variation` it's hard to identify a trend. Observations with different `operating_margin` are distributed along the y-axis uniformly, which makes it hard to identify a relation between both variables. The next step is fitting a simple linear model that can help us to understand this strange plot:
 
 ```{r warning=FALSE,message=FALSE}
-knitr::kable(read_csv(file = 'tests/hyp_2_test_1.csv'),format = "markdown")
+knitr::kable(read_csv(file = '../../results/tests/hyp_2_test_1.csv'),format = "markdown")
 ```
 In this case, we still get a significant slope, and something curious happens, the estimate is negative, which can be interpreted that on each increase in the operating margin of a company, its stock price will fall. 
 

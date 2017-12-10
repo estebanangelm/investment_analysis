@@ -2,14 +2,15 @@
 #
 # This script imports the datasets for the `investment_analysis` project from the Amazon S3 bucket. 
 #
-# Usage: Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
+# Usage:  Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv 
+#         data/original/prices.csv data/original/securities.csv
 
 library(tidyverse)
 
 #Code for disabling R warnings in the terminal
 options(warn = -1)
 
-root <- "../../"
+root <- ""
 
 args <- commandArgs(trailingOnly = TRUE)
 origin_1 <- args[1]

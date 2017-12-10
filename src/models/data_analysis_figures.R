@@ -2,7 +2,10 @@
 #
 # This script takes the processed datasets and creates the figures for the final report. 
 #
-# Usage: Rscript data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png
+# Usage: Rscript data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
+#        data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png 
+#        results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png 
+#        results/figures/eda_plot_2.png
 
 library(tidyverse)
 library(forcats)
@@ -10,7 +13,7 @@ library(forcats)
 #Code for disabling R warnings in the terminal
 options(warn = -1)
 
-root <- "../../"
+root <- ""
 
 args <- commandArgs(trailingOnly = TRUE)
 
