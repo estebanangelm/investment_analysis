@@ -52,3 +52,7 @@ The data sources used for this project come from the [Kaggle's New York Stock Ex
 2. [Fundamentals](https://s3.ca-central-1.amazonaws.com/investment-analysis/fundamentals.csv): includes the financial statements (income statement, balance sheet and cashflow) of the companies listed in the S&P 500 for the last 5 years.
 3. [Prices](https://s3.ca-central-1.amazonaws.com/investment-analysis/prices-split-adjusted.csv): includes the daily price (open, high, low and close) for each company in the last 5 years in the S&P 500.
 
+## Analysis Flowchart
+
+![](doc/flowchart.png)
+
