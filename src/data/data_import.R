@@ -6,6 +6,7 @@
 
 library(tidyverse)
 
+#Code for disabling R warnings in the terminal
 options(warn = -1)
 
 root <- "../../"
@@ -26,4 +27,5 @@ write_csv(fundamentals,paste(root,destination_1,sep=""))
 write_csv(prices,paste(root,destination_2,sep=""))
 write_csv(securities,paste(root,destination_3,sep=""))
 
+#Code for enabling R warnings in the terminal again
 options(warn = 0)

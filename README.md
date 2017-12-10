@@ -56,3 +56,23 @@ The data sources used for this project come from the [Kaggle's New York Stock Ex
 
 ![](doc/flowchart.png)
 
+## Usage
+
+The scripts should be executed from the root directory of the repository in the following order:
+
+- **data_import.r**
+
+`Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
+`
+
+- **data_wrangling.r**
+
+`Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv`
+
+- **data\_analysis_figures.r**
+
+`Rscript data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png`
+
+- **data\_analysis_tests.r**
+
+`Rscript data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv`

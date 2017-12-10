@@ -7,6 +7,7 @@
 library(tidyverse)
 library(forcats)
 
+#Code for disabling R warnings in the terminal
 options(warn = -1)
 
 root <- "../../"
@@ -29,7 +30,9 @@ var_price_margin <- read_csv(paste(root,origin_2,sep=""))
 price_sector <- read_csv(paste(root,origin_3,sep=""))
 market_cap_sector <- read_csv(paste(root,origin_4,sep=""))
 
-#Hypothesis 1
+######################################################################################
+#Plots for Hypothesis 1
+######################################################################################
 
 hyp_1_plot_1 <- ggplot(var_price_revenue)+
   geom_point(aes(x=var_revenue,y=var_price),alpha=0.3,color="#4B86B4")+
@@ -51,7 +54,9 @@ ggsave(paste(root,destination_1,sep=""))
 
 ggsave(paste(root,destination_2,sep=""))
 
-#Hypothesis 2
+######################################################################################
+#Plots for Hypothesis 2
+######################################################################################
 
 (hyp_2_plot_1 <- ggplot(var_price_margin)+
   geom_point(aes(x=operating_margin,y=var_price),alpha=0.3,color="#4B86B4")+
@@ -59,12 +64,14 @@ ggsave(paste(root,destination_2,sep=""))
   theme_minimal()+
   geom_smooth(aes(x=operating_margin,y=var_price),method="lm")+
   scale_y_continuous("Price Variation",labels = scales::percent_format())+
-  scale_x_continuous("Revenue Variation")+
-  ggtitle("Price Variation vs Revenue Variation"))
+  scale_x_continuous("Operating Profit")+
+  ggtitle("Price Variation vs Operating Profit"))
 
 ggsave(paste(root,destination_3,sep=""))
 
-#EDA 1
+######################################################################################
+# Plots for EDA
+######################################################################################
 
 ggplot(price_sector)+
   geom_boxplot(aes(x=sector,y=var_price,fill=(sector == "Information Technology")),alpha=0.6)+
@@ -75,8 +82,6 @@ ggplot(price_sector)+
   ggtitle("Returns per sector")
 
 ggsave(paste(root,destination_4,sep=""))
-
-#EDA 2
 
 ggplot(market_cap_sector)+
   geom_col(aes(x=fct_reorder(sector,total_market_cap),y=total_market_cap),alpha=0.6,color="#4B86B4",fill="#4B86B4")+

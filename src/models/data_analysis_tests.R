@@ -8,6 +8,7 @@ library(tidyverse)
 library(forcats)
 library(broom)
 
+#Code for disabling R warnings in the terminal
 options(warn = -1)
 
 root <- "../../"
@@ -24,7 +25,10 @@ destination_3 <- args[5]
 var_price_revenue <- read_csv(paste(root,origin_1,sep=""))
 var_price_margin <- read_csv(paste(root,origin_2,sep=""))
 
-## Analysis for Hypothesis 1
+######################################################################################
+## Tests for Hypothesis 1
+######################################################################################
+
 #Code for fitting a linear model between the variation in revenue and the variation in price
 
 hyp_1_test_1 <- tidy(summary(lm(var_price_revenue$var_price~var_price_revenue$var_revenue)))
@@ -43,9 +47,15 @@ hyp_1_test_2 <-  data_frame(revenue = c("Increase","Increase","Decrease","Decrea
 
 write_csv(hyp_1_test_2,paste(root,destination_2,sep=""))
 
-## Analysis for Hypothesis 2
+######################################################################################
+## Tests for Hypothesis 2
+######################################################################################
+
 #Code for fitting a linear model between operating margin and the variation in price
 
 hyp_2_test_1 <- tidy(summary(lm(var_price_margin$var_price~var_price_margin$operating_margin)))
 
 write_csv(hyp_2_test_1,paste(root,destination_3,sep=""))
+
+#Code for enabling R warnings in the terminal again
+options(warn = 0)
