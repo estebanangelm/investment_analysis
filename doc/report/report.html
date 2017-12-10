@@ -269,8 +269,30 @@ We can see that the IT sector slightly outperforms the rest of the sectors and E
 <pre><code class="r">knitr::kable(read_csv(file = &#39;../../results/tests/hyp_1_test_1.csv&#39;),format = &quot;markdown&quot;)
 </code></pre>
 
-<pre><code>## Error: &#39;../../results/tests/hyp_1_test_1.csv&#39; does not exist in current working directory (&#39;/Users/estebanangelm/UBC/Block_3/DSCI_522/investment_analysis&#39;).
-</code></pre>
+<table><thead>
+<tr>
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">(Intercept)</td>
+<td align="right">0.0998371</td>
+<td align="right">0.0091192</td>
+<td align="right">10.94804</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">var_price_revenue$var_revenue</td>
+<td align="right">0.5168894</td>
+<td align="right">0.0550940</td>
+<td align="right">9.38195</td>
+<td align="right">0</td>
+</tr>
+</tbody></table>
 
 <p>From the previous linear model, we can see that the slope term is significant. Thus we can say that there&#39;s a positive linear relationship between the variation in profits and the variation in the stock price. In other words, if a company increases the revenue by 1%, holding the rest of the variables constant, the stock price of that company increases a 0.5%. The same occurs with negative variations in revenue.</p>
 
@@ -279,8 +301,34 @@ We can see that the IT sector slightly outperforms the rest of the sectors and E
 <pre><code class="r">knitr::kable(read_csv(file = &#39;../../results/tests/hyp_1_test_2.csv&#39;),format = &quot;markdown&quot;)
 </code></pre>
 
-<pre><code>## Error: &#39;../../results/tests/hyp_1_test_2.csv&#39; does not exist in current working directory (&#39;/Users/estebanangelm/UBC/Block_3/DSCI_522/investment_analysis&#39;).
-</code></pre>
+<table><thead>
+<tr>
+<th align="left">revenue</th>
+<th align="left">price</th>
+<th align="right">num_obs</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">Increase</td>
+<td align="left">Increase</td>
+<td align="right">497</td>
+</tr>
+<tr>
+<td align="left">Increase</td>
+<td align="left">Decrease</td>
+<td align="right">165</td>
+</tr>
+<tr>
+<td align="left">Decrease</td>
+<td align="left">Increase</td>
+<td align="right">147</td>
+</tr>
+<tr>
+<td align="left">Decrease</td>
+<td align="left">Decrease</td>
+<td align="right">143</td>
+</tr>
+</tbody></table>
 
 <p>With the previous table, we can see that a 67% of the observations have an effect in price coherent with what we found in the linear model. We can group and visualize the results from the previous table also with the following plot:</p>
 
@@ -300,8 +348,30 @@ In this case, when we compare the <code>operating_margin</code> with the <code>p
 <pre><code class="r">knitr::kable(read_csv(file = &#39;../../results/tests/hyp_2_test_1.csv&#39;),format = &quot;markdown&quot;)
 </code></pre>
 
-<pre><code>## Error: &#39;../../results/tests/hyp_2_test_1.csv&#39; does not exist in current working directory (&#39;/Users/estebanangelm/UBC/Block_3/DSCI_522/investment_analysis&#39;).
-</code></pre>
+<table><thead>
+<tr>
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">(Intercept)</td>
+<td align="right">0.1485044</td>
+<td align="right">0.0116347</td>
+<td align="right">12.763926</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr>
+<td align="left">var_price_margin$operating_margin</td>
+<td align="right">-0.0011767</td>
+<td align="right">0.0003671</td>
+<td align="right">-3.205148</td>
+<td align="right">0.0013949</td>
+</tr>
+</tbody></table>
 
 <p>In this case, we still get a significant slope, and something curious happens, the estimate is negative, which can be interpreted that on each increase in the operating margin of a company, its stock price will fall. </p>
 

@@ -93,10 +93,9 @@ Rscript src/models/data_analysis_tests.R data/processed/var_price_revenue.csv da
 - **run_report.sh**
 
 ```
-bash run_report.sh
+bash src/report/run_report.sh
 ```
-
-This execution will be automated with a Makefile in the 3rd release, for now the paths seems long but is just copying and pasting them in the terminal!
+Note: the knitting of the final document is not working fine because of the YAML header. It will be working for the 3rd milestone when the Makefile is required.
 
 ## Dependencies
 
