@@ -5,7 +5,7 @@
 # usage: bash run_all.sh
 
 #Runs script for importing data
-Rscript src/data/data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
+#Rscript src/data/data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
 
 #Runs script for  data wrangling
 Rscript src/data/data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv
@@ -18,4 +18,4 @@ Rscript src/models/data_analysis_tests.R data/processed/var_price_revenue.csv da
 
 #Run scripts for creating the report
 #The yaml header is not working in the automated knitting. Will solve it for the next milestone in the make file.
-#Rscript -e 'ezknitr::ezknit("src/reports/report.Rmd", out_dir="./doc/report/")'
+Rscript -e 'ezknitr::ezknit("src/reports/report.Rmd", out_dir="./doc/report/")'
