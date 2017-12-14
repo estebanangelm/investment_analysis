@@ -3,7 +3,7 @@ output: github_document
 ---
 
 
-#Investment Analysis Report
+# Investment Analysis Report
 
 
 ```r
@@ -82,12 +82,17 @@ We can also visualize and group the different stocks with the following behavior
 
 
 ```r
-knitr::kable(read_csv(file = '../../results/tests/hyp_1_test_2.csv'),format = "markdown")
+knitr::kable(read_csv(file = 'results/tests/hyp_1_test_2.csv'),format = "markdown")
 ```
 
-```
-## Error: '../../results/tests/hyp_1_test_2.csv' does not exist in current working directory ('/Users/estebanangelm/UBC/Block_3/DSCI_522/investment_analysis').
-```
+
+
+|revenue  |price    | num_obs|
+|:--------|:--------|-------:|
+|Increase |Increase |     497|
+|Increase |Decrease |     165|
+|Decrease |Increase |     147|
+|Decrease |Decrease |     143|
 With the previous table, we can see that a 67% of the observations have an effect in price coherent with what we found in the linear model. We can group and visualize the results from the previous table also with the following plot:
 
 ![BoxPlot Revenue](../../results/figures/hyp_1_plot_2.png)
@@ -106,12 +111,15 @@ In this case, when we compare the `operating_margin` with the `price_variation` 
 
 
 ```r
-knitr::kable(read_csv(file = '../../results/tests/hyp_2_test_1.csv'),format = "markdown")
+knitr::kable(read_csv(file = 'results/tests/hyp_2_test_1.csv'),format = "markdown")
 ```
 
-```
-## Error: '../../results/tests/hyp_2_test_1.csv' does not exist in current working directory ('/Users/estebanangelm/UBC/Block_3/DSCI_522/investment_analysis').
-```
+
+
+|term                              |   estimate| std.error| statistic|   p.value|
+|:---------------------------------|----------:|---------:|---------:|---------:|
+|(Intercept)                       |  0.1485044| 0.0116347| 12.763926| 0.0000000|
+|var_price_margin$operating_margin | -0.0011767| 0.0003671| -3.205148| 0.0013949|
 In this case, we still get a significant slope, and something curious happens, the estimate is negative, which can be interpreted that on each increase in the operating margin of a company, its stock price will fall. 
 
 Eventhough the linear relationship is significant, if we see the magnitude of the estimate (0.001) we can say that the effect is not relevant, because we're saying that if we increase the operating margin by 1% (one percent in a billion dollar company is a lot of money), the price of that stock falls -0.11%.

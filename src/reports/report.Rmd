@@ -5,7 +5,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-#Investment Analysis Report
+# Investment Analysis Report
 
 ```{r message=FALSE,warning=FALSE}
 library(tidyverse)
