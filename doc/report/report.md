@@ -56,7 +56,7 @@ We can see that Financials, Healthcare and IT companies dominate the index. Addi
 ![Returns per Sector](../../results/figures/eda_plot_1.png)
 We can see that the IT sector slightly outperforms the rest of the sectors and Energy is underperforming compared to the rest. After this overview of the S&P index, we start analyzing the two hypothesis of this project.
 
-##Hypothesis 1
+## Hypothesis 1
 
 Using common sense, we would say that a company is in a good situation if it increases its sales and in a bad situation if those sales decrease year on year. Most of the times things are more complicated because behind the variation in revenue other factors can affect the future of a company. But assuming that the rest of the variables are held constant, we can plot the changes in revenue per company in the S&P 500 year on year vs the variation in the stock price in that same period. We get the following scatterplot which shows a slight linear relationship:
 
@@ -100,7 +100,7 @@ With this plot, we can see that the mean price variation and also most the price
 Now that we validated Hypothesis 1, we can continue analyzing hypothesis 2.
 
 
-##Hypothesis 2
+## Hypothesis 2
 
 Additional to increasing sales, a company should leave some profit from that revenue. The purpose of this hypothesis is finding if there's a relation between the market price and the profit these companies have. For this case, I used the `operating_margin`, which is one of the financial measures of profitability. This indicator is calculated dividing the operating profit (Revenue - Costs - Operating Expenses) by the total revenue. Companies with high `operating_margin` leave a nice amount of money per each dollar sold.
 

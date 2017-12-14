@@ -2,7 +2,7 @@
 #
 # This script takes the processed datasets and creates some statistical analysis for testing the hypotheses. 
 #
-# Usage: hyp_1_test_1.R data/processed/var_price_revenue.csv results/tests/hyp_1_test_1.csv
+# Usage: Rscript hyp_1_test_1.R data/processed/var_price_revenue.csv results/tests/hyp_1_test_1.csv
 
 library(tidyverse)
 library(forcats)

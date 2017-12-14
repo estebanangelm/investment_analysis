@@ -2,8 +2,7 @@
 #
 # This script takes the original datasets and performs some wrangling in order to make the visualization process easier. 
 #
-# Usage: Rscript prices_sector.R data/original/fundamentals.csv data/original/prices.csv 
-#        data/original/securities.csv data/processed/price_sector.csv
+# Usage: Rscript prices_sector.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/price_sector.csv
 
 library(tidyverse)
 
@@ -30,6 +29,15 @@ securities <- read_csv(paste(root,origin_3,sep=""))
 ######################################################################################
 
 #This code chunk calculates the variations in price for each ticker with Sector and saves them in a CSV file.
+
+var_price_revenue <- fundamentals %>%  select(ticker = `Ticker Symbol`,
+                                              period = `Period Ending`,
+                                              total_revenue = `Total Revenue`) %>%
+                                              left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>% 
+                                              select(ticker,period,total_revenue,price = close) %>% 
+                                              group_by(ticker) %>% 
+                                              mutate(var_revenue = total_revenue / lag(total_revenue) - 1,
+                                                     var_price = price / lag(price) - 1)
 
 prices_sector <- var_price_revenue %>% inner_join(securities,by = c("ticker" = "Ticker symbol")) %>% 
   select(ticker,var_price,sector = `GICS Sector`)
