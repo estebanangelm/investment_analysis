@@ -1,15 +1,12 @@
 ---
 output: github_document
+author: "Esteban Angel"
 ---
 
 
 # Investment Analysis Report
 
 
-```r
-library(tidyverse)
-library(knitr)
-```
 
 The purpose of this data analysis project is identifying some patterns of successful and unsuccessful companies in the Standard & Poors index. The S&P 500 is an index of 505 companies in the United States stock market which have a market capitalization of at least $6.1 billion. In other words, it's a group of the most relevant public companies in the United States.
 
@@ -65,12 +62,6 @@ Using common sense, we would say that a company is in a good situation if it inc
 Additional to the visual analysis, I fitted a simple linear model comparing these variations in price with the changes in revenue:
 
 
-```r
-knitr::kable(read_csv(file = 'results/tests/hyp_1_test_1.csv'),format = "markdown")
-```
-
-
-
 |term                          |  estimate| std.error| statistic| p.value|
 |:-----------------------------|---------:|---------:|---------:|-------:|
 |(Intercept)                   | 0.0998371| 0.0091192|  10.94804|       0|
@@ -79,12 +70,6 @@ knitr::kable(read_csv(file = 'results/tests/hyp_1_test_1.csv'),format = "markdow
 From the previous linear model, we can see that the slope term is significant. Thus we can say that there's a positive linear relationship between the variation in profits and the variation in the stock price. In other words, if a company increases the revenue by 1%, holding the rest of the variables constant, the stock price of that company increases a 0.5%. The same occurs with negative variations in revenue.
 
 We can also visualize and group the different stocks with the following behaviors:
-
-
-```r
-knitr::kable(read_csv(file = 'results/tests/hyp_1_test_2.csv'),format = "markdown")
-```
-
 
 
 |revenue  |price    | num_obs|
@@ -108,12 +93,6 @@ The approach for testing this hypothesis was similar to hypothesis 1, starting w
 
 ![Scatter Profit](../../results/figures/hyp_2_plot_1.png)
 In this case, when we compare the `operating_margin` with the `price_variation` it's hard to identify a trend. Observations with different `operating_margin` are distributed along the y-axis uniformly, which makes it hard to identify a relation between both variables. The next step is fitting a simple linear model that can help us to understand this strange plot:
-
-
-```r
-knitr::kable(read_csv(file = 'results/tests/hyp_2_test_1.csv'),format = "markdown")
-```
-
 
 
 |term                              |   estimate| std.error| statistic|   p.value|
