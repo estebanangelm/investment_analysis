@@ -78,6 +78,7 @@ We can also visualize and group the different stocks with the following behavior
 |Increase |Decrease |     165|
 |Decrease |Increase |     147|
 |Decrease |Decrease |     143|
+
 With the previous table, we can see that 67% of the observations in the analysis have an effect in line with the analysis (increase in price with increase in revenue and decrease in price with decreases in revenue). We can also group and visualize the results from the previous table with the following plot:
 
 ![BoxPlot Revenue](../../results/figures/hyp_1_plot_2.png)
@@ -98,6 +99,7 @@ In this case, when we compare the `operating_margin` with the `price_variation` 
 |:---------------------------------|----------:|---------:|---------:|---------:|
 |(Intercept)                       |  0.1485044| 0.0116347| 12.763926| 0.0000000|
 |var_price_margin$operating_margin | -0.0011767| 0.0003671| -3.205148| 0.0013949|
+
 In this case, we still get a significant slope, and something curious happens, the estimate is negative, which can be interpreted that on each increase in the operating margin of a company, its stock price will fall. 
 
 Even though the linear relationship is significant, if we see the magnitude of the estimate (0.001) we can say that the effect is not relevant, because we're saying that if we increase the operating margin by 1% (one percent in a billion dollar company is a lot of money), the price of that stock falls -0.11%.
