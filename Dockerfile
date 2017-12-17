@@ -14,3 +14,6 @@ RUN Rscript -e "install.packages('broom', repos = 'http://cran.us.r-project.org'
 
 # install the packrat package
 RUN Rscript -e "install.packages('packrat', repos = 'http://cran.us.r-project.org')"
+
+# install the forcats package
+RUN Rscript -e "install.packages('forcats', repos = 'http://cran.us.r-project.org')"
