@@ -64,7 +64,7 @@ I recommend the following flow for executing this project:
 	
 3. Run the Docker image and link it to your local version of the repository:
 
-	`docker run -it --rm -v local_directory_of_this_repo:/investment_analysis estebanangelm/investment_analysis /bin/bash`
+	`docker run -it --rm -v /local_directory_of_this_repo/:/investment_analysis estebanangelm/investment_analysis /bin/bash`
 	
 4. From the root in the Docker container go to the `investment_analysis` folder and run the following command:
 
