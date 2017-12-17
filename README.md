@@ -1,11 +1,11 @@
 # Investment Analysis
-The purpose of this data analysis project is identifying some patterns of successful and unsuccessful companies in the Standard & Poors index. The S&P 500 is an index of 505 companies in the United States stock market which have a market capitalization of at least $6.1 billion. In other words, it's a group of the most relevant public companies in the United States.
+The purpose of this data analysis project is identifying some patterns of successful and unsuccessful companies in the Standard & Poors index. The S&P 500 is an index of 505 companies in the United States stock market which have a market capitalization of at least $6.1 billion. In other words, it's a group of the most relevant public companies.
 
 [More information about the S&P 500](https://www.investopedia.com/terms/s/sp500.asp)
 
-This patterns can help us to select them or discard them from our portfolio. There are two approaches to making investment decisions:
+This patterns can help us select or discard companies from our portfolio. There are two approaches for making investment decisions:
 
-- **Fundamental analysis:** takes the real business indicators from a company to help decide about investments. This is the approach investors like Warren Buffet use, contrasting the real situation of the business with its temporal price in the market. If a company has solid indicators and they aren't reflected in the stock price, there's a temporal opportunity for creating wealth from that difference.
+- **Fundamental analysis:** takes the real business indicators from a company to help us decide about investments. This is the approach investors like Warren Buffet use, contrasting the real situation of the business with its stock price in the market. If a company has solid indicators and they aren't reflected in the stock price, there's an opportunity for creating wealth from that difference.
 
 - **Technical analysis:** tries to find patterns in the time series of prices. It's focused in the short term. For this project, all my analysis will be fundamental, based on the financial information of the companies and not the technical analysis.
 
@@ -15,7 +15,7 @@ This patterns can help us to select them or discard them from our portfolio. The
 
 > Common sense is not so common -Voltaire
 
-Using common sense, we can say that a company is good if it sells a lot, increases its sales and gives some profit from those sales. I want to analyze with this project if this common-sense assumption is also applied in the stock market, in other words:
+Using common sense, we can say that a company is good if it sells a lot, increases its revenue year on year and gives some profit from those sales. I want to analyze with this project if this common-sense assumption is also applied in the stock market, in other words:
 
 Companies that increase their sales and their profits also increase their stock price?
 
@@ -28,21 +28,19 @@ For this project I will try to test some hypothesis about the companies in the S
 
 2. Companies with high profitability have high investment returns for stockholders.
 
-These hypotheses are general and can give us a snapshot of internal business variables that affect the performance of a stock in the market. In the future, the idea with this project is going to another level of fundamental analysis. I want to find the relation between the quality of the people leading a business and the results of the companies and also analyzing the official communications using NLP.
+These hypotheses are general and can give us a snapshot of internal business variables that affect the performance of a stock in the market. In the future, the idea with this project is going to another level of fundamental analysis. I want to find the relationship between the quality of the people leading a business and its results and also analyze their official communications using NLP.
 
-## Plan of Action
+## Process
 
-This data analysis project will follow the following steps:
+This data analysis project follows the following steps:
 
-1. **Download the financial data from the last four years of the S&P**. This includes three tables of data: the list of companies with their profile information, the financial statements for these companies in the last four years and the price history of the stocks in the index for the last four years.
+1. **Download the financial data from the last four years of the S&P**. This includes three tables of data: the list of companies with their profile information, their financial statements from the last four years and their stock price history in the last four years.
 
-2. **Exploratory data analysis**: this part of the analysis includes some general plots and analysis of the results of the companies in the S&P 500 index and the evolution in the stock prices.
+2. **Exploratory data analysis**: this part of the analysis includes some general plots and analysis of the results of the companies in the S&P 500 index divided by sectors.
 
-3. **Hypothesis validation**: each hypothesis will be analyzed on separate scripts. The idea is performing some data wrangling with the raw data and using scatter plots and box plots to identify some underlying relations between the variables. Then performing some linear regression tests to find the relations between the variables.
+3. **Hypothesis validation**: each hypothesis was analyzed on separate scripts. Each script executes some data wrangling with the raw data and creates scatter plots and box plots to identify some underlying relations between the variables. Also, there are other scripts for performing some linear regression tests to find the relations between the variables.
 
-4. **Results report**: the results of the EDA and the hypothesis validation will be stored in a final document.
-
-PS: In the `src` folder in the repository I started the scripts for steps 1 - 3.
+4. **Results report**: the results of the EDA and the hypothesis validation are stored in the `doc/report/report.md` document.
 
 ## Data Sources
 
@@ -58,48 +56,45 @@ The data sources used for this project come from the [Kaggle's New York Stock Ex
 
 ## Usage
 
-First clone this GitHub repository. Then go to the terminal and from the `root` execute the following command:
+I recommend the following flow for executing this project:
 
-`bash run_all.sh`
+1. Clone this repository:
 
-This script executes all the scripts necessary for creating the final report.
+	`git clone https://github.com/estebanangelm/investment_analysis.git`
 
-You can also execute each of the scripts independently but you must follow this order:
+2. Run Docker and execute the following command in the terminal for downloading the image
 
-- **data_import.r**
+	`docker pull estebanangelm/investment_analysis`
+	
+3. Run the Docker image and link it to your local version of the repository:
 
-```
-Rscript src/data/data_import.R fundamentals prices securities data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv
-```
+	`docker run -it --rm -v local_directory_of_this_repo:/investment_analysis estebanangelm/investment_analysis /bin/bash`
+	
+4. From the root in the Docker container go to the `investment_analysis` folder and run the following command:
 
-- **data_wrangling.r**
+	`make all`
+	
+5. And for cleaning all the files of the analysis:
 
-```
-Rscript src/data/data_wrangling.R data/original/fundamentals.csv data/original/prices.csv data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv
-```
+	`make clean`
+	
 
-- **data\_analysis_figures.r**
+### Alternative usage
 
-```
-Rscript src/models/data_analysis_figures.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv data/processed/price_sector.csv data/processed/market_cap_sector.csv results/figures/hyp_1_plot_1.png results/figures/hyp_1_plot_2.png results/figures/hyp_2_plot_1.png results/figures/eda_plot_1.png results/figures/eda_plot_2.png
-```
+An alternative way of running this project is running the Make file from the root of the directory:
 
-- **data\_analysis_tests.r**
+`make all`
 
-```
-Rscript src/models/data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv
-```
+And for cleaning the directory after running the analysis:
 
-- **run_report.sh**
+`make clean`
 
-```
-bash src/report/run_report.sh
-```
-Note: the knitting of the final document is not working fine because of the YAML header. It will be working for the 3rd milestone when the Makefile is required.
 
 ## Dependencies
 
-For running this project you should have:
+For running this project without using the Docker container you should have:
 
 - R and RStudio.
-- `tidyverse` and `ezknitr`libraries.
+- `packrat`
+- `tidyverse`
+- `ezknitr`

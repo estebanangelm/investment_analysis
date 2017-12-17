@@ -1,7 +1,7 @@
 # Docker file for the project investment_analysis
 # Esteban Angel, Dec, 2017
 
-# use rocker/tidyverse as the base image and
+# use rocker/tidyverse as the base image
 FROM rocker/tidyverse
 
 # install the ezknitr packages
