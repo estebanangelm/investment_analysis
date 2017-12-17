@@ -1,8 +1,8 @@
 # Make File
 # Esteban Angel December 2017
-# This script runs all the scripts for creating the report.
+# This script runs all the scripts required for creating the final report.
 #
-# usage: make all
+# usage: make all from the root directory
 
 all: doc/report/report.md
 
