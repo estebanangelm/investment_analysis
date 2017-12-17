@@ -1,9 +1,9 @@
 # Esteban Angel, Dec 2017
 #
-# This script takes the original datasets and performs some wrangling in order to make the visualization process easier. 
+# This script takes the original datasets and performs some wrangling in order to make the visualization process easier.
 #
-# Usage: Rscript data_wrangling.R data/original/fundamentals.csv data/original/prices.csv 
-#        data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
+# Usage: Rscript src/data/data_wrangling.R data/original/fundamentals.csv data/original/prices.csv 
+#        data/original/securities.csv data/processed/var_price_revenue.csv data/processed/var_price_margin.csv
 #        data/processed/price_sector.csv data/processed/market_cap_sector.csv
 
 library(tidyverse)
@@ -39,9 +39,9 @@ securities <- read_csv(paste(root,origin_3,sep=""))
 var_price_revenue <- fundamentals %>%  select(ticker = `Ticker Symbol`,
                                               period = `Period Ending`,
                                               total_revenue = `Total Revenue`) %>%
-                                        left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>% 
-                                        select(ticker,period,total_revenue,price = close) %>% 
-                                        group_by(ticker) %>% 
+                                        left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>%
+                                        select(ticker,period,total_revenue,price = close) %>%
+                                        group_by(ticker) %>%
                                         mutate(var_revenue = total_revenue / lag(total_revenue) - 1,
                                                var_price = price / lag(price) - 1)
 
@@ -56,9 +56,9 @@ write_csv(var_price_revenue,paste(root,destination_1,sep=""))
 var_price_margin <- fundamentals %>%  select(ticker = `Ticker Symbol`,
                                               period = `Period Ending`,
                                               operating_margin = `Operating Margin`) %>%
-                                        left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>% 
-                                        select(ticker,period,operating_margin,price = close) %>% 
-                                        group_by(ticker) %>% 
+                                        left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>%
+                                        select(ticker,period,operating_margin,price = close) %>%
+                                        group_by(ticker) %>%
                                         mutate(var_price = price / lag(price) - 1)
 
 write_csv(var_price_margin,paste(root,destination_2,sep=""))
@@ -69,7 +69,7 @@ write_csv(var_price_margin,paste(root,destination_2,sep=""))
 
 #This code chunk calculates the variations in price for each ticker with Sector and saves them in a CSV file.
 
-prices_sector <- var_price_revenue %>% inner_join(securities,by = c("ticker" = "Ticker symbol")) %>% 
+prices_sector <- var_price_revenue %>% inner_join(securities,by = c("ticker" = "Ticker symbol")) %>%
   select(ticker,var_price,sector = `GICS Sector`)
 
 write_csv(prices_sector,paste(root,destination_3,sep=""))
@@ -79,12 +79,12 @@ write_csv(prices_sector,paste(root,destination_3,sep=""))
 market_cap_sector <- fundamentals %>% select(ticker = `Ticker Symbol`,
                                              period = `Period Ending`,
                                              shares = `Estimated Shares Outstanding`) %>%
-                                      left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>% 
-                                      select(ticker,period,shares,price = close) %>% 
-                                      left_join(securities,by=c("ticker"="Ticker symbol")) %>% 
-                                      select(ticker,period,shares,price,sector=`GICS Sector`) %>% 
-                                      mutate(market_cap = price * shares) %>% 
-                                      group_by(sector) %>% 
+                                      left_join(prices,by=c("ticker" = "symbol","period" = "date")) %>%
+                                      select(ticker,period,shares,price = close) %>%
+                                      left_join(securities,by=c("ticker"="Ticker symbol")) %>%
+                                      select(ticker,period,shares,price,sector=`GICS Sector`) %>%
+                                      mutate(market_cap = price * shares) %>%
+                                      group_by(sector) %>%
                                       summarize(total_market_cap = sum(market_cap,na.rm=TRUE))
 
 write_csv(market_cap_sector,paste(root,destination_4,sep=""))

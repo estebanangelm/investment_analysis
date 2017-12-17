@@ -1,8 +1,8 @@
 # Esteban Angel, Dec 2017
 #
-# This script takes the processed datasets and creates some statistical analysis for testing the hypotheses. 
+# This script takes the processed datasets and creates some statistical analysis for testing the hypotheses.
 #
-# Usage: Rscript data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
+# Usage: Rscript src/models/data_analysis_tests.R data/processed/var_price_revenue.csv data/processed/var_price_margin.csv 
 #        results/tests/hyp_1_test_1.csv results/tests/hyp_1_test_2.csv results/tests/hyp_2_test_1.csv
 
 library(tidyverse)

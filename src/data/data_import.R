@@ -2,7 +2,7 @@
 #
 # This script imports the datasets for the `investment_analysis` project from the Amazon S3 bucket.
 #
-# Usage:  Rscript data_import.R fundamentals prices securities data/original/fundamentals.csv
+# Usage:  Rscript src/data/data_import.R fundamentals prices securities data/original/fundamentals.csv
 #         data/original/prices.csv data/original/securities.csv
 
 library(tidyverse)
