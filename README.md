@@ -77,7 +77,7 @@ I recommend the following flow for executing this project:
 
 ### Alternative usage
 
-An alternative way of running this project is running the Make file from the root of the directory:
+An alternative way of running this project is running the Make file from the root of the directory, you should have `packrat` installed. It sets all the required dependencies for running the project. Go to the root directory and run this command from the terminal to create the report:
 
 `make all`
 
@@ -91,6 +91,8 @@ And for cleaning the directory after running the analysis:
 Due to the quantity of plots and tests, the Makefile diagram is not clear. It's recommended to zoom in or open it on a new browser window:
 
 ![](Makefile.png)
+
+I built the dependency diagram using [`makefile2graph`](https://github.com/lindenb/makefile2graph) 
 
 For running this project without using the Docker container you should have:
 
