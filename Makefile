@@ -56,6 +56,11 @@ clean:
 	rm -f results/tests/hyp_1_test_1.csv
 	rm -f results/tests/hyp_1_test_2.csv
 	rm -f results/tests/hyp_2_test_1.csv
+	rm -f results/figures/eda_plot_1.png
+	rm -f results/figures/eda_plot_2.png
+	rm -f results/figures/hyp_1_plot_1.png
+	rm -f results/figures/hyp_1_plot_2.png
+	rm -f results/figures/hyp_2_plot_1.png
 	rm -f Rplots.pdf
 	rm -f doc/report/report.md
 	rm -f doc/report/report.html
