@@ -42,7 +42,7 @@ doc/report/report.md: src/reports/report.Rmd results/figures/eda_plot_1.png resu
 	Rscript -e 'ezknitr::ezknit("src/reports/report.Rmd", out_dir="./doc/report/")'
 
 #########################
-# Clean Intermediate Files
+# Clean all files after the analysis
 #########################
 
 clean:
